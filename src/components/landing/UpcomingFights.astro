@@ -1,0 +1,69 @@
+---
+// Upcoming Fights — KFA event cards
+// Replace `events` with real data feed later
+const events = [
+  {
+    promotion: "Khmer Flow Arena",
+    title: "KFA 03 — TBA",
+    date: "TBA",
+    venue: "Phnom Penh, Cambodia",
+    status: "ANNOUNCED",
+  },
+];
+---
+
+<section class="py-24 sm:py-32 relative">
+  <div class="max-w-7xl mx-auto px-6 sm:px-8">
+    <!-- Header -->
+    <div
+      class="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-16 gap-6"
+    >
+      <div>
+        <span
+          class="text-brand-gold text-[10px] font-black uppercase tracking-[0.3em] mb-3 block"
+        >
+          Upcoming
+        </span>
+        <h2
+          class="text-3xl sm:text-4xl md:text-5xl font-display font-black uppercase tracking-tighter"
+        >
+          Next On <span class="text-brand-gold">The Card.</span>
+        </h2>
+      </div>
+    </div>
+
+    <!-- Events list -->
+    <div class="space-y-4">
+      {
+        events.map((e) => (
+          <div class="group relative grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 p-6 sm:p-8 border border-white/10 rounded-lg bg-white/[0.02] hover:bg-white/[0.04] hover:border-brand-gold/30 transition-all">
+            <div>
+              <div class="flex items-center gap-3 mb-3">
+                <span class="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold px-2 py-1 rounded bg-brand-gold/10 border border-brand-gold/20">
+                  {e.status}
+                </span>
+                <span class="text-[10px] font-black uppercase tracking-[0.3em] text-white/40">
+                  {e.promotion}
+                </span>
+              </div>
+              <h3 class="text-2xl sm:text-3xl font-display font-black uppercase tracking-tighter text-white mb-2">
+                {e.title}
+              </h3>
+              <p class="text-sm text-white/50 font-medium">
+                {e.date} · {e.venue}
+              </p>
+            </div>
+            <div class="flex items-center gap-3">
+              <a
+                href="/events"
+                class="px-6 py-3 text-[10px] font-black uppercase tracking-[0.25em] border border-white/15 text-white/80 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all rounded-lg"
+              >
+                Details
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,44 @@
+---
+// src/pages/index.astro — Crush Combat landing v2
+// Architects of the Combat Economy — agency + media house
+// Section order locked in .gstack/refs/DESIGN.md
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import Hero from "../components/landing/Hero.astro";
+import AgencyProof from "../components/landing/AgencyProof.astro";
+import DisciplineSelector from "../components/landing/DisciplineSelector.astro";
+import RosterStrip from "../components/landing/RosterStrip.astro";
+import UpcomingFights from "../components/landing/UpcomingFights.astro";
+import MediaHouse from "../components/landing/MediaHouse.astro";
+import Mission from "../components/landing/Mission.astro";
+import StorytellingTrio from "../components/landing/StorytellingTrio.astro";
+import PartnerLogos from "../components/landing/PartnerLogos.astro";
+import ApparelCallout from "../components/landing/ApparelCallout.astro";
+import ApplyCTA from "../components/landing/ApplyCTA.astro";
+---
+
+<BaseLayout
+  title="Crush Combat — Architects of the Combat Economy | MMA Talent Agency & Broadcast Media House"
+  description="Southeast Asia's premier MMA talent agency and broadcast media house. Scouting elite fighters in MMA, Kun Khmer, and Grappling. Powering Khmer Flow Arena."
+>
+  <Hero />
+  <AgencyProof />
+  <DisciplineSelector />
+  <RosterStrip />
+  <UpcomingFights />
+  <MediaHouse />
+  <Mission />
+  <StorytellingTrio />
+  <PartnerLogos
+    tier="sponsor"
+    eyebrow="Partners"
+    heading="Trusted Sponsors"
+  />
+  <PartnerLogos
+    tier="promotion"
+    eyebrow="Promotions"
+    heading="Powered By Crush Combat"
+  />
+  <ApparelCallout />
+  <ApplyCTA />
+</BaseLayout>

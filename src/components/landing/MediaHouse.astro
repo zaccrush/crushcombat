@@ -1,0 +1,91 @@
+---
+// Media House — second business pillar: livestream + podcast studio
+const capabilities = [
+  "Multi-camera livestream production",
+  "Podcast studios for combat sports talent",
+  "Broadcast packaging and post-production",
+  "Social content cut-downs and rights mgmt",
+  "Commentary teams and analyst pipeline",
+];
+---
+
+<section
+  class="py-24 sm:py-32 relative bg-brand-darker border-y border-white/5"
+>
+  <div class="max-w-7xl mx-auto px-6 sm:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <!-- Left: copy + capability list -->
+      <div>
+        <span
+          class="text-brand-gold text-[10px] font-black uppercase tracking-[0.3em] mb-4 block"
+        >
+          Media House
+        </span>
+        <h2
+          class="text-3xl sm:text-4xl md:text-5xl font-display font-black uppercase tracking-tighter mb-6"
+        >
+          The Broadcast <span class="text-brand-gold">Engine.</span>
+        </h2>
+        <p class="text-base sm:text-lg text-white/60 font-medium leading-relaxed mb-10 max-w-lg">
+          State-of-the-art livestream and podcast studios. We produce the
+          high-fidelity narratives, commentary, and digital content that
+          modern combat sports demand.
+        </p>
+
+        <ul class="space-y-3 mb-10">
+          {
+            capabilities.map((c, i) => (
+              <li class="flex items-start gap-4 text-sm sm:text-base text-white/80">
+                <span class="text-brand-gold font-display font-black text-xs tracking-[0.2em] pt-1 shrink-0 w-8">
+                  0{i + 1}
+                </span>
+                <span class="leading-relaxed">{c}</span>
+              </li>
+            ))
+          }
+        </ul>
+
+        <a
+          href="/partner"
+          class="inline-flex items-center gap-3 px-8 py-3.5 text-[11px] font-black uppercase tracking-[0.25em] border border-white/15 text-white/90 hover:text-black hover:bg-brand-gold hover:border-brand-gold transition-all rounded-lg group"
+        >
+          Book the Studio
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="group-hover:translate-x-1 transition-transform"
+            ><path d="m9 18 6-6-6-6"></path></svg
+          >
+        </a>
+      </div>
+
+      <!-- Right: visual placeholder -->
+      <div class="relative aspect-[4/5] lg:aspect-[3/4] rounded-lg overflow-hidden border border-white/5">
+        <div class="absolute inset-0 bg-gradient-to-br from-brand-dark via-black to-brand-darker"></div>
+        <div
+          class="absolute inset-0 bg-cover bg-center opacity-60"
+          style="background-image:url('/studio/broadcast.jpg');"
+        ></div>
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"
+        ></div>
+        <!-- Caption -->
+        <div class="absolute bottom-0 left-0 right-0 p-8">
+          <p class="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold mb-2">
+            On Air
+          </p>
+          <p class="text-sm text-white/70 font-medium">
+            Phnom Penh studio · Kun Khmer · MMA · Grappling broadcasts
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

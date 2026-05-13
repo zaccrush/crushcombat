@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FighterCard from "../../components/FighterCard.astro";
+import { getCollection } from "astro:content";
+
+const fighters = await getCollection("fighters");
+---
+
+<BaseLayout
+  title="Fighter Roster — FNF Cambodia"
+  description="Browse the complete FNF Cambodia fighter roster. Kun Khmer and MMA athletes."
+>
+  <div class="pt-32 sm:pt-40 pb-24 min-h-screen">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8">
+      <header class="mb-16">
+        <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-brand-gold font-medium text-sm tracking-widest uppercase mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          <span>Official Roster</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-display font-black uppercase tracking-tighter text-white mb-6">
+          Fighter <span class="text-brand-gold">Roster</span>
+        </h1>
+        <p class="text-xl text-[#888] font-medium leading-relaxed max-w-2xl">
+          The warriors of Friday Night Fights. From legendary Kun Khmer strikers to rising MMA prospects.
+        </p>
+      </header>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {fighters.map((fighter) => (
+          <FighterCard fighter={fighter} />
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

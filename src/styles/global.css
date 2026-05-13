@@ -1,0 +1,194 @@
+@import "tailwindcss";
+
+/* ===== FNF Cambodia — Brand Design Tokens ===== */
+@theme {
+  --color-brand-dark: #0a0a0a;
+  --color-brand-darker: #050505;
+  --color-brand-light: #f5f5f5;
+  --color-brand-gold: #d4af37;
+  --color-brand-gold-dim: #b8962e;
+  --color-brand-muted: #888888;
+  --color-brand-subtle: #555555;
+
+  --font-sans: "Inter", "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ===== Base Resets ===== */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-brand-dark);
+  color: var(--color-brand-light);
+}
+
+::selection {
+  background-color: var(--color-brand-gold);
+  color: var(--color-brand-dark);
+}
+
+/* ===== Safe Area for iOS Bottom Nav ===== */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* ===== Scrollbar Styling ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-brand-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-subtle);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-gold);
+}
+
+/* ===== Utility Animations ===== */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulse-gold {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px 4px rgba(212, 175, 55, 0.15);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out both;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(212, 175, 55, 0.05) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-pulse-gold {
+  animation: pulse-gold 2s ease-in-out infinite;
+}
+
+/* ===== Stagger Delays ===== */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* ===== Fighter Card Hover Effect ===== */
+.fighter-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fighter-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 60px -10px rgba(212, 175, 55, 0.15),
+              0 0 0 1px rgba(212, 175, 55, 0.1);
+}
+
+/* ===== Prose for Fighter Markdown Content ===== */
+.prose-fighter {
+  color: #aaa;
+  line-height: 1.8;
+}
+
+.prose-fighter h1,
+.prose-fighter h2,
+.prose-fighter h3 {
+  color: var(--color-brand-light);
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+}
+
+.prose-fighter h1 {
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.prose-fighter h2 {
+  font-size: 1.25rem;
+  color: var(--color-brand-gold);
+}
+
+.prose-fighter h3 {
+  font-size: 1rem;
+}
+
+.prose-fighter strong {
+  color: var(--color-brand-light);
+}
+
+.prose-fighter em {
+  color: var(--color-brand-gold);
+  font-style: italic;
+}
+
+.prose-fighter ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.prose-fighter li {
+  position: relative;
+  padding-left: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.prose-fighter li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--color-brand-gold);
+}
+
+.prose-fighter a {
+  color: var(--color-brand-gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose-fighter a:hover {
+  color: var(--color-brand-light);
+}

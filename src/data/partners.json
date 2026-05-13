@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Khmer Flow Arena",
+    "shortName": "KFA",
+    "logo": "/partners/kfa.svg",
+    "url": "https://khmerflow.com",
+    "tier": "promotion",
+    "weight": 100,
+    "description": "Official broadcast partner. Kun Khmer · MMA · Grappling."
+  },
+  {
+    "name": "Khmer Flow",
+    "shortName": "Khmer Flow Apparel",
+    "logo": "/partners/khmerflow.svg",
+    "url": "https://khmerflow.com",
+    "tier": "apparel",
+    "weight": 50,
+    "description": "Official apparel of Khmer Flow Arena. Heritage streetwear from Phnom Penh."
+  }
+]

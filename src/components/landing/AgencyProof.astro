@@ -1,0 +1,56 @@
+---
+// Agency Proof — KPI band establishing credibility
+// Three stats + small partner logo strip
+---
+
+<section
+  class="py-20 sm:py-24 border-y border-white/5 bg-brand-darker relative"
+>
+  <div class="max-w-7xl mx-auto px-6 sm:px-8">
+    <!-- KPI tiles -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
+      {
+        [
+          { value: "100+", label: "Fighters Represented" },
+          { value: "12+", label: "Countries Sourced" },
+          { value: "3", label: "Disciplines · MMA · Kun Khmer · Grappling" },
+        ].map((kpi) => (
+          <div class="text-center md:text-left">
+            <div class="text-5xl sm:text-6xl md:text-7xl font-display font-black text-brand-gold leading-none tracking-tighter mb-3">
+              {kpi.value}
+            </div>
+            <div class="text-[10px] sm:text-[11px] font-black uppercase tracking-[0.3em] text-white/60">
+              {kpi.label}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Partner strip -->
+    <div
+      class="mt-16 pt-12 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-6"
+    >
+      <span
+        class="text-[10px] font-black uppercase tracking-[0.3em] text-white/40"
+      >
+        Powering
+      </span>
+      <div class="flex items-center gap-10 flex-wrap justify-center">
+        <a
+          href="https://khmerflow.com"
+          target="_blank"
+          rel="noopener"
+          class="text-xl sm:text-2xl font-display font-black uppercase tracking-tight text-white/70 hover:text-brand-gold transition-colors"
+        >
+          Khmer Flow Arena
+        </a>
+        <span
+          class="text-[10px] font-black uppercase tracking-[0.3em] text-white/30 border border-white/10 px-3 py-1.5 rounded-full"
+        >
+          + Future Promotions
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

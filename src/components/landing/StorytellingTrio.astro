@@ -1,0 +1,110 @@
+---
+// Storytelling Trio — article · video · fighter spotlight
+// Static stubs for now; wire to CMS/feed later
+const cards = [
+  {
+    eyebrow: "Article",
+    title: "The Roster Reset: 100 Fighters, One Vision",
+    image: "/stories/article-1.jpg",
+    href: "/stories",
+    cta: "Read",
+  },
+  {
+    eyebrow: "Video",
+    title: "Inside the Khmer Flow Arena Camp",
+    image: "/stories/video-1.jpg",
+    href: "/watch",
+    cta: "Watch",
+  },
+  {
+    eyebrow: "Fighter",
+    title: "Spotlight: Long Benloeurn",
+    image: "/stories/fighter-1.jpg",
+    href: "/fighters/long-benloeurn",
+    cta: "Profile",
+  },
+];
+---
+
+<section
+  class="py-24 sm:py-32 relative bg-brand-darker border-y border-white/5"
+>
+  <div class="max-w-7xl mx-auto px-6 sm:px-8">
+    <div
+      class="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-16 gap-6"
+    >
+      <div>
+        <span
+          class="text-brand-gold text-[10px] font-black uppercase tracking-[0.3em] mb-3 block"
+        >
+          Stories
+        </span>
+        <h2
+          class="text-3xl sm:text-4xl md:text-5xl font-display font-black uppercase tracking-tighter"
+        >
+          From the <span class="text-brand-gold">Newsroom.</span>
+        </h2>
+      </div>
+      <a
+        href="/stories"
+        class="text-[11px] font-black uppercase tracking-[0.25em] text-white/50 hover:text-brand-gold transition-colors flex items-center gap-2 group"
+      >
+        All Stories
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="group-hover:translate-x-1 transition-transform"
+          ><path d="m9 18 6-6-6-6"></path></svg
+        >
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+      {
+        cards.map((c) => (
+          <a
+            href={c.href}
+            class="group relative aspect-[4/5] overflow-hidden rounded-lg border border-white/5 hover:border-brand-gold/30 transition-all bg-brand-dark"
+          >
+            <div
+              class="absolute inset-0 bg-cover bg-center opacity-60 transition-all duration-500 group-hover:scale-105 group-hover:opacity-80"
+              style={`background-image:url('${c.image}');`}
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+            <div class="absolute inset-0 p-6 sm:p-7 flex flex-col justify-end">
+              <span class="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold mb-3">
+                {c.eyebrow}
+              </span>
+              <h3 class="text-xl sm:text-2xl font-display font-black uppercase tracking-tight text-white leading-tight mb-4">
+                {c.title}
+              </h3>
+              <span class="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-white/60 group-hover:text-brand-gold group-hover:gap-3 transition-all">
+                {c.cta}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

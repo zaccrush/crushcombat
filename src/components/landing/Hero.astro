@@ -1,0 +1,97 @@
+---
+// Hero — agency-positioned, dual CTA
+// "Architects of the Combat Economy" eyebrow, brutal wide sans H1,
+// fighter-apply primary + brand-partner secondary
+---
+
+<section
+  class="relative min-h-screen flex items-center justify-center overflow-hidden"
+>
+  <!-- Backdrop: dark gradient + subtle radial gold + grain texture -->
+  <div class="absolute inset-0 bg-gradient-to-b from-brand-darker via-brand-dark to-brand-dark"></div>
+  <div
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-brand-gold/[0.04] rounded-full blur-[140px] pointer-events-none"
+  ></div>
+
+  <!-- Optional cinematic photo overlay slot (drop image at /hero/fighter.jpg) -->
+  <div
+    class="absolute inset-0 bg-[url('/hero/fighter.jpg')] bg-cover bg-center opacity-[0.18] mix-blend-luminosity pointer-events-none"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Vignette -->
+  <div
+    class="absolute inset-0 bg-gradient-radial pointer-events-none"
+    style="background:radial-gradient(ellipse at center,transparent 0%,rgba(0,0,0,0.65) 100%);"
+  ></div>
+
+  <div
+    class="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 text-center pt-32 pb-24 sm:pt-40 sm:pb-32"
+  >
+    <div class="animate-fade-in-up">
+      <!-- Eyebrow -->
+      <div
+        class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-brand-gold font-bold text-[10px] tracking-[0.3em] uppercase mb-10"
+      >
+        <span
+          class="w-1.5 h-1.5 bg-brand-gold rounded-full animate-pulse-gold"
+        ></span>
+        Architects of the Combat Economy
+      </div>
+
+      <!-- H1 — brutal wide sans, stacked -->
+      <h1
+        class="text-5xl sm:text-7xl md:text-8xl lg:text-[9rem] font-display font-black uppercase tracking-tighter leading-[0.82] mb-8"
+      >
+        Fighter First.
+        <span class="block text-brand-gold">World Stage.</span>
+      </h1>
+
+      <!-- Sub -->
+      <p
+        class="text-base sm:text-lg md:text-xl text-[#9a958c] font-medium max-w-2xl mx-auto leading-relaxed mb-12"
+      >
+        Southeast Asia's MMA talent agency and broadcast media house.
+        Scouting elite fighters in MMA, Kun Khmer, and Grappling.
+        Powering Khmer Flow Arena.
+      </p>
+
+      <!-- Dual CTA -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5">
+        <a
+          href="/apply"
+          class="group bg-brand-gold text-black px-10 py-4 font-bold rounded-xl text-[11px] uppercase tracking-[0.25em] hover:bg-white transition-all shadow-[0_20px_60px_rgba(212,175,55,0.25)] active:scale-95 flex items-center gap-3"
+        >
+          Apply for Representation
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="group-hover:translate-x-1 transition-transform"
+            ><path d="m9 18 6-6-6-6"></path></svg
+          >
+        </a>
+        <a
+          href="/partner"
+          class="px-10 py-4 font-bold rounded-xl text-[11px] uppercase tracking-[0.25em] border border-white/15 text-white/80 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all active:scale-95"
+        >
+          Partner with Us
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll cue -->
+  <div
+    class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-white/20"
+  >
+    <span class="text-[9px] font-black uppercase tracking-[0.4em]">Scroll</span>
+    <div class="w-[1px] h-8 bg-gradient-to-b from-white/20 to-transparent"></div>
+  </div>
+</section>

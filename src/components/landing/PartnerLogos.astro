@@ -1,0 +1,55 @@
+---
+// PartnerLogos — data-driven, hidden when no partners match `tier`
+import partners from "../../data/partners.json";
+
+interface Props {
+  tier: "promotion" | "sponsor" | "apparel";
+  heading?: string;
+  eyebrow?: string;
+}
+
+const { tier, heading, eyebrow } = Astro.props;
+
+const filtered = (partners as Array<any>)
+  .filter((p) => p.tier === tier)
+  .sort((a, b) => (b.weight ?? 0) - (a.weight ?? 0));
+---
+
+{
+  filtered.length > 0 && (
+    <section class="py-20 sm:py-24 relative border-y border-white/5">
+      <div class="max-w-7xl mx-auto px-6 sm:px-8">
+        {(eyebrow || heading) && (
+          <div class="text-center mb-12">
+            {eyebrow && (
+              <span class="text-brand-gold text-[10px] font-black uppercase tracking-[0.3em] mb-3 block">
+                {eyebrow}
+              </span>
+            )}
+            {heading && (
+              <h3 class="text-2xl sm:text-3xl font-display font-black uppercase tracking-tighter text-white">
+                {heading}
+              </h3>
+            )}
+          </div>
+        )}
+        <div class="flex items-center justify-center gap-8 sm:gap-16 flex-wrap">
+          {filtered.map((p) => (
+            <a
+              href={p.url}
+              target="_blank"
+              rel="noopener"
+              title={p.description ?? p.name}
+              class="group inline-flex items-center justify-center transition-all opacity-50 hover:opacity-100 grayscale hover:grayscale-0"
+            >
+              {/* Text fallback while logo SVGs are not yet provided */}
+              <span class="text-lg sm:text-xl font-display font-black uppercase tracking-tight text-white">
+                {p.shortName ?? p.name}
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

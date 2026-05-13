@@ -1,0 +1,169 @@
+---
+// /apply — discipline-branched fighter application (Phase E)
+// Stub form; wire to backend (Formspree, Resend, custom) before launch
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const disciplineParam = Astro.url.searchParams.get("discipline") ?? "";
+---
+
+<BaseLayout
+  title="Apply for Representation — Crush Combat"
+  description="Apply to be represented by Crush Combat Agency. MMA · Kun Khmer · Grappling. Southeast Asia's premier combat sports talent agency."
+>
+  <section class="pt-32 sm:pt-40 pb-24 sm:pb-32 min-h-screen">
+    <div class="max-w-3xl mx-auto px-6 sm:px-8">
+      <!-- Header -->
+      <div class="mb-12 text-center">
+        <span
+          class="text-brand-gold text-[10px] font-black uppercase tracking-[0.3em] mb-4 block"
+        >
+          Step Up
+        </span>
+        <h1
+          class="text-4xl sm:text-5xl md:text-6xl font-display font-black uppercase tracking-tighter mb-6"
+        >
+          Apply for <span class="text-brand-gold">Representation.</span>
+        </h1>
+        <p class="text-base sm:text-lg text-white/60 font-medium leading-relaxed max-w-xl mx-auto">
+          Five minutes. Three disciplines. One shot at the world stage.
+        </p>
+      </div>
+
+      <!-- Form scaffold -->
+      <form
+        action="/api/apply"
+        method="POST"
+        class="space-y-10 p-8 sm:p-10 bg-white/[0.02] border border-white/10 rounded-xl"
+      >
+        <!-- Step 1: discipline -->
+        <fieldset>
+          <legend class="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold mb-4">
+            01 · Discipline
+          </legend>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {
+              [
+                { value: "mma", label: "MMA" },
+                { value: "kun-khmer", label: "Kun Khmer" },
+                { value: "grappling", label: "Grappling" },
+              ].map((d) => (
+                <label class="relative cursor-pointer">
+                  <input
+                    type="radio"
+                    name="discipline"
+                    value={d.value}
+                    checked={disciplineParam === d.value}
+                    class="peer sr-only"
+                    required
+                  />
+                  <span class="block px-6 py-4 text-center font-display font-black text-xl uppercase tracking-tight border border-white/15 rounded-lg text-white/70 peer-checked:border-brand-gold peer-checked:text-brand-gold peer-checked:bg-brand-gold/5 hover:border-white/30 hover:text-white transition-all">
+                    {d.label}
+                  </span>
+                </label>
+              ))
+            }
+          </div>
+        </fieldset>
+
+        <!-- Step 2: basics -->
+        <fieldset class="space-y-5">
+          <legend class="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold mb-4">
+            02 · Basics
+          </legend>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <label class="block">
+              <span class="block text-[10px] font-black uppercase tracking-[0.25em] text-white/50 mb-2">Full Name</span>
+              <input type="text" name="name" required class="w-full px-4 py-3 bg-brand-darker border border-white/10 rounded-lg text-white placeholder-white/30 focus:border-brand-gold focus:outline-none transition-colors" />
+            </label>
+            <label class="block">
+              <span class="block text-[10px] font-black uppercase tracking-[0.25em] text-white/50 mb-2">Email</span>
+              <input type="email" name="email" required class="w-full px-4 py-3 bg-brand-darker border border-white/10 rounded-lg text-white placeholder-white/30 focus:border-brand-gold focus:outline-none transition-colors" />
+            </label>
+            <label class="block">
+              <span class="block text-[10px] font-black uppercase tracking-[0.25em] text-white/50 mb-2">Age</span>
+              <input type="number" name="age" min="16" max="60" required class="w-full px-4 py-3 bg-brand-darker border border-white/10 rounded-lg text-white placeholder-white/30 focus:border-brand-gold focus:outline-none transition-colors" />
+            </label>
+            <label class="block">
+              <span class="block text-[10px] font-black uppercase tracking-[0.25em] text-white/50 mb-2">Weight (kg)</span>
+              <input type="number" name="weight" min="40" max="160" required class="w-full px-4 py-3 bg-brand-darker border border-white/10 rounded-lg text-white placeholder-white/30 focus:border-brand-gold focus:outline-none transition-colors" />
+            </label>
+            <label class="block">
+              <span class="block text-[10px] font-black uppercase tracking-[0.25em] text-white/50 mb-2">Country</span>
+              <input type="text" name="country" required class="w-full px-4 py-3 bg-brand-darker border border-white/10 rounded-lg text-white placeholder-white/30 focus:border-brand-gold focus:outline-none transition-colors" />
+            </label>
+            <label class="block">
+              <span class="block text-[10px] font-black uppercase tracking-[0.25em] text-white/50 mb-2">Gym</span>
+              <input type="text" name="gym" class="w-full px-4 py-3 bg-brand-darker border border-white/10 rounded-lg text-white placeholder-white/30 focus:border-brand-gold focus:outline-none transition-colors" />
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- Step 3: experience -->
+        <fieldset class="space-y-5">
+          <legend class="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold mb-4">
+            03 · Experience
+          </legend>
+          <div class="grid grid-cols-3 gap-3">
+            <label class="block">
+              <span class="block text-[10px] font-black uppercase tracking-[0.25em] text-white/50 mb-2">Wins</span>
+              <input type="number" name="wins" min="0" class="w-full px-4 py-3 bg-brand-darker border border-white/10 rounded-lg text-white placeholder-white/30 focus:border-brand-gold focus:outline-none transition-colors" />
+            </label>
+            <label class="block">
+              <span class="block text-[10px] font-black uppercase tracking-[0.25em] text-white/50 mb-2">Losses</span>
+              <input type="number" name="losses" min="0" class="w-full px-4 py-3 bg-brand-darker border border-white/10 rounded-lg text-white placeholder-white/30 focus:border-brand-gold focus:outline-none transition-colors" />
+            </label>
+            <label class="block">
+              <span class="block text-[10px] font-black uppercase tracking-[0.25em] text-white/50 mb-2">Draws</span>
+              <input type="number" name="draws" min="0" class="w-full px-4 py-3 bg-brand-darker border border-white/10 rounded-lg text-white placeholder-white/30 focus:border-brand-gold focus:outline-none transition-colors" />
+            </label>
+          </div>
+          <label class="block">
+            <span class="block text-[10px] font-black uppercase tracking-[0.25em] text-white/50 mb-2">Discipline-Specific Notes (clinch experience, IBJJF rank, cage experience, etc.)</span>
+            <textarea name="discipline_notes" rows="3" class="w-full px-4 py-3 bg-brand-darker border border-white/10 rounded-lg text-white placeholder-white/30 focus:border-brand-gold focus:outline-none transition-colors resize-none"></textarea>
+          </label>
+        </fieldset>
+
+        <!-- Step 4: availability -->
+        <fieldset class="space-y-5">
+          <legend class="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold mb-4">
+            04 · Availability
+          </legend>
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input type="checkbox" name="travel" class="w-5 h-5 accent-brand-gold" />
+            <span class="text-sm text-white/80">Willing to travel internationally</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input type="checkbox" name="visa_ready" class="w-5 h-5 accent-brand-gold" />
+            <span class="text-sm text-white/80">Passport / visa-ready for SE Asia events</span>
+          </label>
+        </fieldset>
+
+        <!-- Step 5: media -->
+        <fieldset class="space-y-5">
+          <legend class="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold mb-4">
+            05 · Media
+          </legend>
+          <label class="block">
+            <span class="block text-[10px] font-black uppercase tracking-[0.25em] text-white/50 mb-2">Highlight Reel URL (YouTube / Vimeo)</span>
+            <input type="url" name="reel" placeholder="https://" class="w-full px-4 py-3 bg-brand-darker border border-white/10 rounded-lg text-white placeholder-white/30 focus:border-brand-gold focus:outline-none transition-colors" />
+          </label>
+          <label class="block">
+            <span class="block text-[10px] font-black uppercase tracking-[0.25em] text-white/50 mb-2">Headshot URL (optional — we'll ask for upload after review)</span>
+            <input type="url" name="headshot" placeholder="https://" class="w-full px-4 py-3 bg-brand-darker border border-white/10 rounded-lg text-white placeholder-white/30 focus:border-brand-gold focus:outline-none transition-colors" />
+          </label>
+        </fieldset>
+
+        <!-- Submit -->
+        <button
+          type="submit"
+          class="w-full bg-brand-gold text-black px-10 py-5 font-bold rounded-xl text-[11px] uppercase tracking-[0.25em] hover:bg-white transition-all active:scale-[0.99]"
+        >
+          Submit Application
+        </button>
+        <p class="text-xs text-white/40 text-center">
+          We review every application. Expect to hear back within 7 days.
+        </p>
+      </form>
+    </div>
+  </section>
+</BaseLayout>

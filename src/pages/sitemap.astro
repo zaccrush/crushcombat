@@ -1,0 +1,143 @@
+---
+// src/pages/sitemap.astro — Static HTML Sitemap
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const fighters = await getCollection("fighters");
+
+const sections = [
+  {
+    title: "Main Pages",
+    icon: "home",
+    links: [
+      { name: "Home", path: "/" },
+      { name: "Watch / Media", path: "/watch" },
+      { name: "Fighter Registration", path: "/register" },
+      { name: "Frequently Asked Questions", path: "/faq" },
+    ],
+  },
+  {
+    title: "Fighters & Gyms",
+    icon: "users",
+    links: [
+      { name: "All Fighters", path: "/fighters" },
+      { name: "MMA Fighters", path: "/fighters/mma" },
+      { name: "Affiliated Gyms", path: "/gyms" },
+    ],
+  },
+  {
+    title: "About FNF",
+    icon: "info",
+    links: [
+      { name: "About Us", path: "/about" },
+      { name: "Rules & Regulations", path: "/about/rules" },
+      { name: "Partners", path: "/partners" },
+      { name: "Sponsors", path: "/about/sponsors" },
+    ],
+  },
+  {
+    title: "Support & Legal",
+    icon: "file-text",
+    links: [
+      { name: "Contact Us", path: "/contact" },
+      { name: "Privacy Policy", path: "/privacy-policy" },
+      { name: "Terms of Use", path: "/terms-of-use" },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Sitemap — FNF Cambodia"
+  description="Complete site directory for FNF Cambodia. Navigate to fighters, gyms, media, and more."
+>
+  <div class="pt-32 sm:pt-40 pb-24 min-h-screen">
+    <div class="max-w-4xl mx-auto px-6 sm:px-8">
+      <!-- Header -->
+      <header class="mb-16">
+        <div
+          class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-brand-gold font-medium text-sm tracking-widest uppercase mb-6"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+          <span>Site Directory</span>
+        </div>
+        <h1
+          class="text-4xl sm:text-5xl md:text-6xl font-display font-medium uppercase tracking-tighter text-white mb-6"
+        >
+          HTML <span class="text-brand-gold">Sitemap</span>
+        </h1>
+        <p class="text-xl text-[#888] font-medium leading-relaxed max-w-2xl">
+          Complete architectural index of the Friday Night Fights platform for
+          fighters, fans, and search bots.
+        </p>
+      </header>
+
+      <!-- Section cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        {
+          sections.map((section) => (
+            <div class="bg-[#0a0a0a] rounded-3xl p-8 border border-white/5">
+              <h2 class="flex items-center gap-3 text-xl font-display uppercase tracking-widest text-white mb-6">
+                <span class="text-brand-gold">
+                  {section.icon === "home" && (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                  )}
+                  {section.icon === "users" && (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  )}
+                  {section.icon === "info" && (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                  )}
+                  {section.icon === "file-text" && (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+                  )}
+                </span>
+                {section.title}
+              </h2>
+              <ul class="space-y-4">
+                {section.links.map((link) => (
+                  <li>
+                    <a
+                      href={link.path}
+                      class="group flex items-center justify-between text-[#888] hover:text-brand-gold transition-colors"
+                    >
+                      <span class="font-medium">{link.name}</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-0 group-hover:opacity-100 transform -translate-x-4 group-hover:translate-x-0 transition-all"><path d="m9 18 6-6-6-6"/></svg>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Fighter Profiles Index -->
+      <div class="bg-[#0a0a0a] rounded-3xl p-8 border border-white/5">
+        <h2
+          class="flex items-center gap-3 text-xl font-display uppercase tracking-widest text-white mb-6"
+        >
+          <span class="text-brand-gold">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </span>
+          Fighter Profiles Index
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-4">
+          {
+            fighters.map((fighter) => (
+              <a
+                href={`/fighters/${fighter.id.replace(/\.md$/, '')}`}
+                class="group flex items-center justify-between text-[#888] hover:text-brand-gold transition-colors"
+              >
+                <span class="font-medium whitespace-nowrap overflow-hidden text-ellipsis">
+                  {fighter.data.name}
+                </span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all shrink-0"><path d="m9 18 6-6-6-6"/></svg>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,103 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  fighter: CollectionEntry<"fighters">;
+}
+
+const { fighter } = Astro.props;
+const { name, style, weightClass, kunKhmerRecord, mmaRecord, heroImage } = fighter.data;
+
+const kk = kunKhmerRecord;
+const mma = mmaRecord;
+const hasBoth = kk && mma;
+---
+
+<a
+  href={`/fighters/${fighter.id.replace(/\.md$/, '')}`}
+  class="fighter-card group relative bg-[#0a0a0a] rounded-3xl border border-white/5 overflow-hidden block"
+>
+  {/* Hero image area */}
+  <div class="aspect-[4/3] bg-gradient-to-br from-brand-gold/10 to-transparent relative overflow-hidden">
+    <Image 
+      src={heroImage} 
+      alt={name} 
+      class="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-luminosity group-hover:mix-blend-normal group-hover:scale-105 transition-all duration-700"
+      widths={[400, 800]}
+      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent z-10"></div>
+    
+    <div class="absolute top-4 right-4 z-20 flex flex-col sm:flex-row items-end sm:items-center gap-2">
+      {kk && (
+        <span class="text-[9px] font-black uppercase tracking-[0.2em] px-3 py-1.5 rounded-full border text-brand-gold border-brand-gold/30 bg-brand-gold/10 backdrop-blur-md">
+          KK
+        </span>
+      )}
+      {mma && (
+        <span class="text-[9px] font-black uppercase tracking-[0.2em] px-3 py-1.5 rounded-full border text-blue-400 border-blue-400/30 bg-blue-400/10 backdrop-blur-md">
+          MMA
+        </span>
+      )}
+    </div>
+    
+    <div class="absolute inset-x-0 bottom-0 pt-16 pb-6 px-6 sm:px-8 z-10">
+      <span class="text-[10px] font-black uppercase tracking-[0.2em] text-brand-gold/80 mb-1 block">
+        {style} · {weightClass}
+      </span>
+      <h3 class="text-2xl sm:text-3xl font-display font-black uppercase tracking-tight text-white group-hover:text-brand-gold transition-colors">
+        {name}
+      </h3>
+    </div>
+  </div>
+
+  {/* Discipline stats bar */}
+  <div class={`px-5 py-4 border-t border-white/5 ${hasBoth ? 'grid grid-cols-2 gap-3' : 'flex items-center justify-between'}`}>
+    {/* Kun Khmer Record */}
+    {kk && (
+      <div class={`${hasBoth ? 'pr-3 border-r border-white/5' : 'flex-1'}`}>
+        <span class="text-[8px] font-black uppercase tracking-[0.2em] text-brand-gold block mb-2">Kun Khmer</span>
+        <div class="flex items-center gap-3">
+          <span class="text-sm font-black">
+            <span class="text-green-400">{kk.wins}</span>
+            <span class="text-white/20">-</span>
+            <span class="text-red-400">{kk.losses}</span>
+            <span class="text-white/20">-</span>
+            <span class="text-white/40">{kk.draws}</span>
+          </span>
+          <span class="text-[8px] font-black uppercase tracking-widest text-white/25 hidden sm:inline">W-L-D</span>
+        </div>
+        <div class="flex items-center gap-1.5 mt-1">
+          <span class="text-xs font-black text-brand-gold">{kk.kos}</span>
+          <span class="text-[7px] font-black uppercase tracking-widest text-brand-gold/50">KOs</span>
+        </div>
+      </div>
+    )}
+
+    {/* MMA Record */}
+    {mma && (
+      <div class={`${hasBoth ? 'pl-3' : 'flex-1'}`}>
+        <span class="text-[8px] font-black uppercase tracking-[0.2em] text-blue-400 block mb-2">MMA</span>
+        <div class="flex items-center gap-3">
+          <span class="text-sm font-black">
+            <span class="text-green-400">{mma.wins}</span>
+            <span class="text-white/20">-</span>
+            <span class="text-red-400">{mma.losses}</span>
+            <span class="text-white/20">-</span>
+            <span class="text-white/40">{mma.draws}</span>
+          </span>
+          <span class="text-[8px] font-black uppercase tracking-widest text-white/25 hidden sm:inline">W-L-D</span>
+        </div>
+        <div class="flex items-center gap-1.5 mt-1">
+          <span class="text-xs font-black text-brand-gold">{mma.kos}</span>
+          <span class="text-[7px] font-black uppercase tracking-widest text-brand-gold/50">KOs</span>
+        </div>
+      </div>
+    )}
+    
+    {!hasBoth && (
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/20 group-hover:text-brand-gold group-hover:translate-x-1 transition-all"><path d="m9 18 6-6-6-6"/></svg>
+    )}
+  </div>
+</a>
