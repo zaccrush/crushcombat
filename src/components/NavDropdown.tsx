@@ -60,7 +60,7 @@ export default function NavDropdown({
             initial={{ opacity: 0, y: 10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
-            className="absolute left-0 top-full -mt-2 w-56 bg-[#1a1a1a] border border-white/5 rounded-2xl p-2 shadow-2xl z-50 backdrop-blur-xl"
+            className="absolute left-0 top-full -mt-2 w-56 bg-[#140e0a] border border-white/8 rounded-2xl p-2 shadow-2xl z-50 backdrop-blur-xl"
           >
             {items.map((item) => (
               <a

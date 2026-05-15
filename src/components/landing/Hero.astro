@@ -1,37 +1,40 @@
 ---
-// Hero — agency-positioned, dual CTA
-// "Architects of the Combat Economy" eyebrow, brutal wide sans H1,
-// fighter-apply primary + brand-partner secondary
+// Hero — BKFC raw energy × Anthropic refined minimalism
 ---
 
 <section
   class="relative min-h-screen flex items-center justify-center overflow-hidden"
 >
-  <!-- Backdrop: dark gradient + subtle radial gold + grain texture -->
+  <!-- Warm near-black base -->
   <div class="absolute inset-0 bg-gradient-to-b from-brand-darker via-brand-dark to-brand-dark"></div>
+
+  <!-- Anthropic-style warm coral radial glow -->
   <div
-    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-brand-gold/[0.04] rounded-full blur-[140px] pointer-events-none"
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-gold/[0.06] rounded-full blur-[160px] pointer-events-none"
   ></div>
 
-  <!-- Optional cinematic photo overlay slot (drop image at /hero/fighter.jpg) -->
+  <!-- BKFC-style: hard red vertical accent line left -->
+  <div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-brand-red/60 to-transparent pointer-events-none"></div>
+
+  <!-- Cinematic photo overlay -->
   <div
-    class="absolute inset-0 bg-[url('/hero/fighter.jpg')] bg-cover bg-center opacity-[0.18] mix-blend-luminosity pointer-events-none"
+    class="absolute inset-0 bg-[url('/hero/fighter.jpg')] bg-cover bg-center opacity-[0.15] mix-blend-luminosity pointer-events-none"
     aria-hidden="true"
   ></div>
 
   <!-- Vignette -->
   <div
-    class="absolute inset-0 bg-gradient-radial pointer-events-none"
-    style="background:radial-gradient(ellipse at center,transparent 0%,rgba(0,0,0,0.65) 100%);"
+    class="absolute inset-0 pointer-events-none"
+    style="background:radial-gradient(ellipse at center,transparent 0%,rgba(8,6,4,0.7) 100%);"
   ></div>
 
   <div
     class="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 text-center pt-32 pb-24 sm:pt-40 sm:pb-32"
   >
     <div class="animate-fade-in-up">
-      <!-- Eyebrow -->
+      <!-- Eyebrow — Anthropic-clean pill -->
       <div
-        class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-brand-gold font-bold text-[10px] tracking-[0.3em] uppercase mb-10"
+        class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-brand-gold/10 border border-brand-gold/20 text-brand-gold font-bold text-[10px] tracking-[0.3em] uppercase mb-10"
       >
         <span
           class="w-1.5 h-1.5 bg-brand-gold rounded-full animate-pulse-gold"
@@ -39,7 +42,7 @@
         Architects of the Combat Economy
       </div>
 
-      <!-- H1 — brutal wide sans, stacked -->
+      <!-- H1 — BKFC wide-condensed brutalism -->
       <h1
         class="text-5xl sm:text-7xl md:text-8xl lg:text-[9rem] font-display font-black uppercase tracking-tighter leading-[0.82] mb-8"
       >
@@ -47,20 +50,26 @@
         <span class="block text-brand-gold">World Stage.</span>
       </h1>
 
-      <!-- Sub -->
+      <!-- BKFC-style divider with red accent -->
+      <div class="flex items-center justify-center gap-4 mb-8">
+        <div class="h-[1px] w-16 bg-brand-red/50"></div>
+        <span class="text-[9px] font-black uppercase tracking-[0.4em] text-brand-red">Southeast Asia · MMA · Kun Khmer · Grappling</span>
+        <div class="h-[1px] w-16 bg-brand-red/50"></div>
+      </div>
+
+      <!-- Sub — Anthropic measured prose -->
       <p
-        class="text-base sm:text-lg md:text-xl text-[#9a958c] font-medium max-w-2xl mx-auto leading-relaxed mb-12"
+        class="text-base sm:text-lg md:text-xl text-brand-muted font-medium max-w-2xl mx-auto leading-relaxed mb-12"
       >
         Southeast Asia's MMA talent agency and broadcast media house.
-        Scouting elite fighters in MMA, Kun Khmer, and Grappling.
-        Powering Khmer Flow Arena.
+        Scouting elite fighters. Powering Khmer Flow Arena.
       </p>
 
       <!-- Dual CTA -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5">
         <a
           href="/apply"
-          class="group bg-brand-gold text-black px-10 py-4 font-bold rounded-xl text-[11px] uppercase tracking-[0.25em] hover:bg-white transition-all shadow-[0_20px_60px_rgba(212,175,55,0.25)] active:scale-95 flex items-center gap-3"
+          class="group bg-brand-gold text-white px-10 py-4 font-bold rounded-xl text-[11px] uppercase tracking-[0.25em] hover:bg-brand-gold-dim transition-all shadow-[0_20px_60px_rgba(207,102,73,0.3)] active:scale-95 flex items-center gap-3"
         >
           Apply for Representation
           <svg
@@ -79,7 +88,7 @@
         </a>
         <a
           href="/partner"
-          class="px-10 py-4 font-bold rounded-xl text-[11px] uppercase tracking-[0.25em] border border-white/15 text-white/80 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all active:scale-95"
+          class="px-10 py-4 font-bold rounded-xl text-[11px] uppercase tracking-[0.25em] border border-white/15 text-white/80 hover:text-white hover:border-brand-gold/30 hover:bg-brand-gold/5 transition-all active:scale-95"
         >
           Partner with Us
         </a>

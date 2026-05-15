@@ -1,14 +1,21 @@
 @import "tailwindcss";
 
-/* ===== FNF Cambodia — Brand Design Tokens ===== */
+/* ===== Crush Combat — BKFC × Anthropic Design Tokens ===== */
 @theme {
-  --color-brand-dark: #0a0a0a;
-  --color-brand-darker: #050505;
-  --color-brand-light: #f5f5f5;
-  --color-brand-gold: #d4af37;
-  --color-brand-gold-dim: #b8962e;
-  --color-brand-muted: #888888;
-  --color-brand-subtle: #555555;
+  /* Backgrounds: warm near-black (Anthropic warmth over BKFC pure black) */
+  --color-brand-dark: #0d0b09;
+  --color-brand-darker: #080604;
+  /* Text: warm off-white (Anthropic cream) */
+  --color-brand-light: #f0ebe5;
+  /* Primary accent: Anthropic coral/terracotta */
+  --color-brand-gold: #cf6649;
+  --color-brand-gold-dim: #b35a3f;
+  /* Combat accent: BKFC blood red */
+  --color-brand-red: #9b1c1c;
+  --color-brand-red-bright: #c41e1e;
+  /* Neutrals: warm-shifted */
+  --color-brand-muted: #8a7a72;
+  --color-brand-subtle: #4e4038;
 
   --font-sans: "Inter", "Outfit", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Outfit", "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -80,10 +87,10 @@ body {
 
 @keyframes pulse-gold {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+    box-shadow: 0 0 0 0 rgba(207, 102, 73, 0.4);
   }
   50% {
-    box-shadow: 0 0 20px 4px rgba(212, 175, 55, 0.15);
+    box-shadow: 0 0 20px 4px rgba(207, 102, 73, 0.15);
   }
 }
 
@@ -95,7 +102,7 @@ body {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(212, 175, 55, 0.05) 50%,
+    rgba(207, 102, 73, 0.05) 50%,
     transparent 100%
   );
   background-size: 200% 100%;
@@ -121,13 +128,13 @@ body {
 
 .fighter-card:hover {
   transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 20px 60px -10px rgba(212, 175, 55, 0.15),
-              0 0 0 1px rgba(212, 175, 55, 0.1);
+  box-shadow: 0 20px 60px -10px rgba(207, 102, 73, 0.15),
+              0 0 0 1px rgba(207, 102, 73, 0.1);
 }
 
 /* ===== Prose for Fighter Markdown Content ===== */
 .prose-fighter {
-  color: #aaa;
+  color: #a89a92;
   line-height: 1.8;
 }
 

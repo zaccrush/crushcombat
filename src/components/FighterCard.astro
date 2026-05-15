@@ -16,10 +16,10 @@ const hasBoth = kk && mma;
 
 <a
   href={`/fighters/${fighter.id.replace(/\.md$/, '')}`}
-  class="fighter-card group relative bg-[#0a0a0a] rounded-3xl border border-white/5 overflow-hidden block"
+  class="fighter-card group relative bg-[#0d0b09] rounded-3xl border border-white/5 overflow-hidden block"
 >
   {/* Hero image area */}
-  <div class="aspect-[4/3] bg-gradient-to-br from-brand-gold/10 to-transparent relative overflow-hidden">
+  <div class="aspect-[4/3] bg-gradient-to-br from-brand-gold/8 to-transparent relative overflow-hidden">
     <Image 
       src={heroImage} 
       alt={name} 
@@ -27,7 +27,7 @@ const hasBoth = kk && mma;
       widths={[400, 800]}
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
     />
-    <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent z-10"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-[#0d0b09] via-[#0d0b09]/60 to-transparent z-10"></div>
     
     <div class="absolute top-4 right-4 z-20 flex flex-col sm:flex-row items-end sm:items-center gap-2">
       {kk && (
