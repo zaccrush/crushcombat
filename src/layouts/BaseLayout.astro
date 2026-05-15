@@ -11,14 +11,47 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  lang?: "en" | "km";
 }
 
 const {
   title,
   description = "Architects of the Combat Economy. Southeast Asia's MMA talent agency and broadcast media house. Powering Khmer Flow Arena.",
   ogImage,
+  lang = "en",
 } = Astro.props;
 const currentPath = Astro.url.pathname;
+const siteUrl = "https://crushcombat.com";
+const canonicalUrl = `${siteUrl}${currentPath}`;
+const ogLocale = lang === "km" ? "km_KH" : "en_US";
+const ogLocaleAlt = lang === "km" ? "en_US" : "km_KH";
+const kmPath = currentPath.startsWith("/km") ? currentPath : `/km${currentPath === "/" ? "" : currentPath}`;
+const enPath = currentPath.startsWith("/km") ? currentPath.slice(3) || "/" : currentPath;
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Crush Combat",
+  alternateName: "Crush Combat Agency",
+  url: siteUrl,
+  description: "Southeast Asia's premier MMA talent agency and broadcast media house. Scouting elite fighters in MMA, Kun Khmer, and Grappling.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Phnom Penh",
+    addressCountry: "KH",
+    addressRegion: "Phnom Penh",
+  },
+  areaServed: [
+    { "@type": "Country", name: "Cambodia" },
+    { "@type": "Country", name: "Thailand" },
+    { "@type": "Country", name: "Myanmar" },
+    { "@type": "AdministrativeArea", name: "Southeast Asia" },
+  ],
+  sameAs: [
+    "https://www.facebook.com/crushcombat/",
+    "https://www.linkedin.com/services/page/769b653408862b6a63/",
+  ],
+};
 
 // Navigation — Crush Combat IA
 const navLinks = [
@@ -51,22 +84,43 @@ const bottomNavLinks = [
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="theme-color" content="#0d0b09" />
 
+    <!-- Canonical & hreflang for geo SEO -->
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="en" href={`${siteUrl}${enPath}`} />
+    <link rel="alternate" hreflang="km" href={`${siteUrl}${kmPath}`} />
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}${enPath}`} />
+
+    <!-- Geographic meta tags -->
+    <meta name="geo.region" content="KH" />
+    <meta name="geo.placename" content="Phnom Penh, Cambodia" />
+    <meta name="geo.position" content="11.5564;104.9282" />
+    <meta name="ICBM" content="11.5564, 104.9282" />
+    <meta name="language" content={lang === "km" ? "Khmer" : "English"} />
+
+    <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content="Crush Combat" />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:locale:alternate" content={ogLocaleAlt} />
     {ogImage && <meta property="og:image" content={ogImage} />}
 
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+
+    <!-- Schema.org Organization -->
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -158,7 +212,7 @@ const bottomNavLinks = [
           </div>
           <a
             href="/apply"
-            class="hidden xs:flex bg-brand-gold text-black px-6 py-2.5 font-bold rounded-xl text-[10px] uppercase tracking-[0.2em] items-center gap-2 hover:bg-white transition-all shadow-[0_0_20px_rgba(212,175,55,0.2)] active:scale-95"
+            class="hidden xs:flex bg-brand-gold text-white px-6 py-2.5 font-bold rounded-xl text-[10px] uppercase tracking-[0.2em] items-center gap-2 hover:bg-brand-gold-dim transition-all shadow-[0_0_20px_rgba(207,102,73,0.25)] active:scale-95"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -281,7 +335,7 @@ const bottomNavLinks = [
         }
         <a
           href="/apply"
-          class="flex flex-col items-center justify-center p-2 rounded-2xl bg-brand-gold text-black shadow-lg shadow-brand-gold/20 transition-all duration-300"
+          class="flex flex-col items-center justify-center p-2 rounded-2xl bg-brand-gold text-white shadow-lg shadow-brand-gold/20 transition-all duration-300"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

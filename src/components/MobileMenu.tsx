@@ -181,7 +181,7 @@ export default function MobileMenu({
                 >
                   <a
                     href={registerPath}
-                    className="bg-brand-gold text-black w-full py-5 text-center font-bold rounded-2xl flex items-center justify-center gap-3 text-base sm:text-lg uppercase tracking-widest shadow-[0_20px_40px_rgba(212,175,55,0.25)] hover:bg-white hover:scale-[1.02] active:scale-[0.98] transition-all"
+                    className="bg-brand-gold text-white w-full py-5 text-center font-bold rounded-2xl flex items-center justify-center gap-3 text-base sm:text-lg uppercase tracking-widest shadow-[0_20px_40px_rgba(207,102,73,0.25)] hover:bg-brand-gold-dim hover:scale-[1.02] active:scale-[0.98] transition-all"
                   >
                     <UserPlus size={20} strokeWidth={2.5} />
                     {registerLabel}
