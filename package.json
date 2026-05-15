@@ -25,6 +25,7 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
+    "puppeteer": "^25.0.2",
     "wrangler": "^4.90.1"
   }
 }
